@@ -10,6 +10,7 @@ pipeline {
         DOCKER_IMAGE_TAG = "${BUILD_NUMBER}"
         GITHUB_CREDENTIALS = credentials('github-credentials')
         GIT_BRANCH = "master"
+        GIT_URL = "https://github.com/shiv852/tws-e-commerce-app.git"
     }
     
     stages {
@@ -24,7 +25,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 script {
-                    clone("https://github.com/shiv852/tws-e-commerce-app.git","master")
+                    clone(env.GIT_URL,env.GIT_BRANCH)
                 }
             }
         }
